@@ -1,0 +1,17 @@
+.img-responsive{
+  width: 100%;
+  height: 200px;
+  margin: 0;
+}
+
+.page{
+  margin-right: 20%;
+  margin-left: 20%;
+}
+
+.fail2ban{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px
+}

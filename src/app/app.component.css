@@ -7,6 +7,7 @@
 .page{
   margin-right: 20%;
   margin-left: 20%;
+
 }
 
 .imgContent{
@@ -21,3 +22,17 @@
   top: 0;
   overflow: hidden;
 }
+
+a:link
+{
+  color: black;
+  font-size: 14px;
+  margin: auto;
+  text-decoration:none;
+}
+
+a:visited {
+  color: black
+}
+
+

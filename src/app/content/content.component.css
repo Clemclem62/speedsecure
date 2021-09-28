@@ -10,11 +10,6 @@
 
 }
 
-/*.container {*/
-/*  column-count: auto;*/
-/*  column-width: 30em;*/
-/*}*/
-
 h2{
   margin-top: 1.6em;
   text-decoration: underline;
@@ -34,5 +29,10 @@ h2{
   padding-bottom: 0.5em;
   background-color: #F9F9F9;
   width: 100%;
+}
+
+.ajustement{
+  margin-right: 20%;
+  margin-left: 20%;
 }
 

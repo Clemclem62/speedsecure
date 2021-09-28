@@ -1,7 +1,6 @@
-.sticky{
+mat-toolbar {
   position: sticky;
-  width: 100%;
-  top: 0;
+  top: 50px
 }
 
 a:link

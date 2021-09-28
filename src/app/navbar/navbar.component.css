@@ -1,0 +1,17 @@
+.sticky{
+  position: sticky;
+  width: 100%;
+  top: 0;
+}
+
+a:link
+{
+  color: black;
+  font-size: 14px;
+  margin: auto;
+  text-decoration:none;
+}
+
+a:visited {
+  color: black
+}

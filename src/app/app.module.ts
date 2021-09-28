@@ -13,7 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { QualityComponent } from './quality/quality.component';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -33,6 +33,7 @@ import { QualityComponent } from './quality/quality.component';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

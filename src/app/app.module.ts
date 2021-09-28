@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { QualityComponent } from './quality/quality.component';
 
 
 
@@ -21,7 +22,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     HeaderComponent,
     FooterComponent,
     ContentComponent,
-    NavbarComponent
+    NavbarComponent,
+    QualityComponent
   ],
   imports: [
     BrowserModule,

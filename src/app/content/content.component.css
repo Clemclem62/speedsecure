@@ -20,7 +20,7 @@ h2{
   margin-bottom: 2%;
 }
 
-.grey{
+.fail2ban, firewall{
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   background-color: #F9F9F9;
@@ -32,4 +32,3 @@ h2{
   margin-left: 12%;
   text-align: justify;
 }
-

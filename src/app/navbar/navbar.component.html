@@ -1,4 +1,4 @@
-<div>
+<div class="ecran-grand">
   <mat-toolbar class="sticky">
     <a href="#firewall">Firewall</a>
     <a href="#fail2ban">Fail2ban</a>
@@ -13,5 +13,31 @@
     <a href="#https">HTTPS</a>
     <a href="#vpn">VPN</a>
     <a href="#mfa">MFA</a>
+  </mat-toolbar>
+</div>
+
+<div class="ecran-petit">
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon mat-button [matMenuTriggerFor]="menu">menu</mat-icon>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item><a href="#firewall">Firewall</a></button>
+          <button mat-menu-item><a href="#fail2ban">Fail2ban</a></button>
+          <button mat-menu-item><a href="#cle">Authentification par clé publique</a></button>
+          <button mat-menu-item><a href="#root">Mot de passe ROOT</a></button>
+          <button mat-menu-item><a href="#ssh">Port SSH</a></button>
+          <button mat-menu-item><a href="#motd">Traçabilité via Motd</a></button>
+          <button mat-menu-item><a href="#maj">Maj du serveur</a></button>
+          <button mat-menu-item><a href="#php">Sécuriser le PHP</a></button>
+          <button mat-menu-item><a href="#rkhunter">Rkhunter</a></button>
+          <button mat-menu-item><a href="#ip">Restriction par IP</a></button>
+          <button mat-menu-item><a href="#https">HTTPS</a></button>
+          <button mat-menu-item><a href="#vpn">VPN</a></button>
+          <button mat-menu-item><a href="#mfa">MFA</a></button>
+        </mat-menu>
+    </button>
+  </mat-toolbar-row>
   </mat-toolbar>
 </div>

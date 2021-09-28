@@ -14,3 +14,24 @@ a:link
 a:visited {
   color: black
 }
+
+
+@media (min-width: 1200px) {
+  .ecran-grand{
+    display: block;
+  }
+  
+  .ecran-petit{
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ecran-grand{
+    display: none;
+  }
+  
+  .ecran-petit{
+    display: block;
+  }
+}

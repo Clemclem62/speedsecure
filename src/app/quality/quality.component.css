@@ -1,0 +1,25 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.quality{
+  column-count: 4;
+  margin-top: 1em;
+}
+
+.imgContent {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+}
+
+.textContent{
+  text-align: center;
+
+}
+
+h3{
+  margin-bottom: 1rem;
+}

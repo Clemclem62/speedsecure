@@ -1,0 +1,13 @@
+.quality{
+  column-count: 4;
+
+
+}
+
+.imgContent{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  margin-bottom: 30px;
+}

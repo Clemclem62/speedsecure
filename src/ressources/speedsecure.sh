@@ -31,6 +31,7 @@ changePortSSH()
 
 changePortFTP()
 {
+    apt-get install proftpd
     Port_FTP=$(awk -v min=20000 -v max=30000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
     sed -i -e "s/Port 21/Port $Port_FTP/g" /etc/proftpd/proftpd.conf
     echo "Port ftp : $Port_FTP" >> resume.txt

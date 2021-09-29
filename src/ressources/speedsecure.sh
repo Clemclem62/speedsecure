@@ -51,7 +51,7 @@ changePortFTP()
 
 changePortMysql()
 {
-    checkService=$('service mysql status | grep "MariaDB"')
+    checkService=$(service mysql status | grep "MariaDB")
     Port_DB=$(awk -v min=30000 -v max=40000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
     if [ "$checkService" != "" ]
     then

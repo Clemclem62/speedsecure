@@ -123,7 +123,7 @@ configureFail2Ban()
     # IgnoreIP
     IP_Publique=$(wget -qO- icanhazip.com)
     sed -i '/#ignoreip /d' /etc/fail2ban/jail.conf
-    sed -i -e '/ignoreip/a'$IP_Publique'' /etc/fail2ban/jail.conf
+    sed -i -e '/ignoreip/aignoreip = '$IP_Publique'' /etc/fail2ban/jail.conf
 
     # Restart service
     service fail2ban restart

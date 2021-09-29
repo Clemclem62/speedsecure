@@ -1,4 +1,21 @@
 <div class="grey">
+  <div class="content">
+    <p>Vous souhaitez mettre en place un serveur perso pour héberger votre site web, mais vous ne savez pas comment
+      mettre en place la sécurité sur ce dernier ? Pas de panique ! Speed Secure vous propose la solution à votre besoin.
+    </p>
+  </div>
+  </div>
+  
+  <div class="page">
+  
+    <div class="c-block">
+      <img class="ajustement-image" src ="assets/images/Fail2ban_logo.png">
+      <div id="fail2ban">
+        <h2>Fail2ban, l'outils pour bannir des IP</h2>
+      </div>
+      <p class="texte-info">
+        Fail2ban est une application qui analyse les logs de divers services (SSH, Apache, FTP…) en cherchant des
+=======
 <div class="content">
   <p>Vous souhaitez mettre en place un serveur perso pour héberger votre site web, mais vous ne savez pas comment
     mettre en place la sécurité sur ce dernier ? Pas de panique ! Speed Secure vous propose la solution à votre besoin.
@@ -19,6 +36,33 @@
         connexions infructueuses dans les fichiers journaux et procède à un bannissement en ajoutant une règle au pare-feu
         iptables ou nftables pour bannir l'adresse IP de la source.
       </p>
+    </div> 
+  
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/firewall.png">
+      <div id="firewall">
+        <h2>Firewall</h2>
+      </div>
+      <p class="texte-info">
+        Un firewall est un appareil de sécurité réseau qui surveille le trafic réseau entrant et sortant et autorise
+        ou bloque les paquets de donnés en se basant sur un ensemble de règles de sécurité. Il est chargé de dresser
+        une barrière entre votre réseau interne et le trafic entrant provenant de sources externes (comme Internet)
+        afin de bloquer le trafic malveillant des virus et des pirates.
+      </p>
+    </div>
+  
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/password.png">
+      <div id="root">
+        <h2>Modifier son mot de passe root</h2>
+      </div>
+      <p class="texte-info">
+        Il est necessaire de modifier le mot de passe root lors de la connexion en terme de sécurité.
+
   </div>
 
   <div class="target-navbar" id="firewall">
@@ -55,14 +99,68 @@
     <div class="target-navbar" id="cle">
       <h2>L'authentification par clé publique</h2>
     </div>
-    <img class="imgContent" src="assets/images/firewall.png">
-    <p class="ajustement">Un firewall est un appareil de sécurité réseau qui surveille le trafic réseau entrant et sortant et autorise
-      ou bloque les paquets de donnés en se basant sur un ensemble de règles de sécurité. Il est chargé de dresser
-      une barrière entre votre réseau interne et le trafic entrant provenant de sources externes (comme Internet)
-      afin de bloquer le trafic malveillant des virus et des pirates.
-    </p>
-  </div>
+        
+    
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/ssh.jpeg">
+      <div id="ssh">
+        <h2>Modifier son port SSH</h2>
+      </div>
+      <p class="texte-info">
+        Un firewall est un appareil de sécurité réseau qui surveille le trafic réseau entrant et sortant et autorise
+        ou bloque les paquets de donnés en se basant sur un ensemble de règles de sécurité. Il est chargé de dresser
+        une barrière entre votre réseau interne et le trafic entrant provenant de sources externes (comme Internet)
+        afin de bloquer le trafic malveillant des virus et des pirates.
+      </p>
+    </div>
+  
+      
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/firewall.png">
+      <div id="cle">
+        <h2>L'authentification par clé publique</h2>
+      </div>
+      <p class="texte-info">
+        Un firewall est un appareil de sécurité réseau qui surveille le trafic réseau entrant et sortant et autorise
+        ou bloque les paquets de donnés en se basant sur un ensemble de règles de sécurité. Il est chargé de dresser
+        une barrière entre votre réseau interne et le trafic entrant provenant de sources externes (comme Internet)
+        afin de bloquer le trafic malveillant des virus et des pirates.
+      </p>
+    </div>
+  
+  
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/firewall.png">
+      <div id="motd">
+        <h2>La traçabilité via Motd</h2>
+      </div>
+      <p class="texte-info">
+        La traçabilité via MOTD permet d'avoir les logs à chaque tentative de connexion, et va repertorier
+        la date de la dernière connexion, ainsi que toutes les tentatives de connexions infructueuses. Cela vous permettra d'avoir
+        une idée sur les méthodes d'authentifications.
+      </p>
+    </div>
 
+
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/update.jpeg">
+      <div id="maj">
+        <h2>Mettre à jour régulièrement son serveur</h2>
+      </div>
+      <p class="texte-info">
+        Mettre à jour son serveur est primordiale, car il nous permet d'avoir les dernières mises à jours
+          proposées par l'éditeur, pour ainsi éviter les failles de sécurités, les vulnérabilités. Cela vous permettra également
+          d'améliorer la puissance proposées, afin de répondre aux demandes des logiciels. Grâce au script, les mises à jours se
+          feront de manières automatiques.
+      </p>
   <div class="target-navbar" id="motd">
     <h2>La traçabilité via Motd</h2>
   </div>
@@ -76,14 +174,85 @@
     <div class="target-navbar" id="maj">
       <h2>Mettre à jour régulièrement son serveur</h2>
     </div>
-      <img class="imgContent" src="assets/images/update.jpeg">
-      <p class="ajustement">Mettre à jour son serveur est primordiale, car il nous permet d'avoir les dernières mises à jours
-        proposées par l'éditeur, pour ainsi éviter les failles de sécurités, les vulnérabilités. Cela vous permettra également
-        d'améliorer la puissance proposées, afin de répondre aux demandes des logiciels. Grâce au script, les mises à jours se
-        feront de manières automatiques.
+  
+  
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/php.svg">
+      <div id="php">
+        <h2>Sécuriser son PHP</h2>
+      </div>
+      <p class="texte-info">
+        Un firewall est un appareil de sécurité réseau qui surveille le trafic réseau entrant et sortant et autorise
+        ou bloque les paquets de donnés en se basant sur un ensemble de règles de sécurité. Il est chargé de dresser
+        une barrière entre votre réseau interne et le trafic entrant provenant de sources externes (comme Internet)
+        afin de bloquer le trafic malveillant des virus et des pirates.
       </p>
-  </div>
+    </div>
+  
 
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/rkhunter.png">
+      <div id="rkhunter">
+        <h2>Rkhunter</h2>
+      </div>
+      <p class="texte-info">
+        Un firewall est un appareil de sécurité réseau qui surveille le trafic réseau entrant et sortant et autorise
+        ou bloque les paquets de donnés en se basant sur un ensemble de règles de sécurité. Il est chargé de dresser
+        une barrière entre votre réseau interne et le trafic entrant provenant de sources externes (comme Internet)
+        afin de bloquer le trafic malveillant des virus et des pirates.
+      </p>
+    </div>
+
+
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/firewall.png">
+      <div id="ip">
+        <h2>La restrictions des IP</h2>
+      </div>
+      <p class="texte-info">
+        Un firewall est un appareil de sécurité réseau qui surveille le trafic réseau entrant et sortant et autorise
+        ou bloque les paquets de donnés en se basant sur un ensemble de règles de sécurité. Il est chargé de dresser
+        une barrière entre votre réseau interne et le trafic entrant provenant de sources externes (comme Internet)
+        afin de bloquer le trafic malveillant des virus et des pirates.
+      </p>
+    </div>
+
+
+
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/https.jpeg">
+      <div id="https">
+        <h2>Passer son site en HTTPS</h2>
+      </div>
+      <p class="texte-info">
+        HTTPS n'est pas l'opposé de HTTP mais plutôt son petit cousin. Tous deux sont des protocoles de transfert
+        hypertexte qui permettent à des données web d'être affichées sur votre écran lorsque vous envoyez une requête.
+        Cependant, HTTPS est légèrement différent, plus avancé et bien plus sécurisé.
+        Avec HTTPS, les échanges HTTP entre le client et le serveur sont chiffrés (et donc sécurisés) via le protocole
+        TLS (ou autrefois SSL).
+      </p>
+    </div>
+
+
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/https.jpeg">
+      <div id="vpn">
+        <h2>Mettre en place un VPN</h2>
+      </div>
+      <p class="texte-info">
+        ...
+      </p>
+    </div>
   <div class="target-navbar" id="php">
     <h2>Sécuriser son PHP</h2>
   </div>
@@ -146,6 +315,28 @@
   </div>
 
 
-</div>
+    <div class="trait_dessus"></div>
+    
+    <div class="c-block">
+      <img class="ajustement-image" src="assets/images/mfa.png">
+      <div id="mfa">
+        <h2>Configurer une MFA</h2>
+      </div>
+      <p class="texte-info">
+        Un firewall est un appareil de sécurité réseau qui surveille le trafic réseau entrant et sortant et autorise
+        ou bloque les paquets de donnés en se basant sur un ensemble de règles de sécurité. Il est chargé de dresser
+        une barrière entre votre réseau interne et le trafic entrant provenant de sources externes (comme Internet)
+        afin de bloquer le trafic malveillant des virus et des pirates.
+      </p>
+    </div>
 
+    <div class="trait_dessus_fin"></div>
+    
+    <div class="c-block">
+    </div>
 
+  
+  </div>
+  
+  
+  

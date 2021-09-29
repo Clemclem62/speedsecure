@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide&display=swap');
+
+
+.titre{
+  font-family: 'Audiowide', sans-serif;
+  font-size: 80px !important;
+}
+
+
 .fond-image-top{
   position: relative;
   width: 100%;
@@ -14,7 +23,7 @@
 
 .img-responsive1{
   position: absolute;
-  top: 120px;
+  top: 220px;
   width: 35%;
   height: 25%;
   left: 18%;
@@ -23,7 +32,7 @@
 
 .img-responsive2{
   position: absolute;
-  top: 240px;
+  top: 340px;
   width: 35%;
   height: 25%;
   right: 18%;
@@ -37,6 +46,12 @@
 }
 
 @media (max-width: 800px) {
+
+  .titre{
+    font-family: 'Audiowide', sans-serif;
+    font-size: 40px !important;
+  }
+
   .fond-image-top{
     position: relative;
     width: 100%;

@@ -1,10 +1,32 @@
-.imgContent{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 150px;
-  margin-bottom: 30px;
+.page{
+  margin-left: 10%;
+  margin-right: 10%;
 }
+
+.ajustement-image{
+  float: left;
+  padding: 0 100px 100px 0;
+  width: 150px;
+}
+
+.trait_dessus{
+  border-top: 1px solid #000;
+  width : 100%;
+  margin-top: 100px;
+  padding-bottom: 50px;
+}
+
+.trait_dessus_fin{
+  width : 100%;
+  margin-top: 100px;
+  padding-bottom: 50px;
+}
+
+.texte-info{
+  padding-left: 15%;
+  padding-left: 15%;
+}
+
 
 h2{
   margin-top: 1.6em;
@@ -20,13 +42,11 @@ h2{
   margin-bottom: 2%;
 }
 
-.fail2ban, firewall{
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  background-color: #F9F9F9;
-  width: 100%;
-}
 
+.image {
+  float: left;
+  margin: 0 10px 10px 0;
+  }
 .ajustement{
   margin-right: 12%;
   margin-left: 12%;

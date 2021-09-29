@@ -1,3 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+
+
+.content-explication p{
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 25px !important;
+  margin-right: 15%;
+  margin-left: 15%;
+  margin-top: 100px;
+  margin-bottom: 150px;
+  color: #be4a64;
+}
+
+.titre-de-fonction{
+  font-family: 'Audiowide', sans-serif;
+  font-size: 25px !important;
+  text-align: right;
+  text-decoration: none;
+  color: #242a4e;
+}
+
+.texte-info{
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 20px !important;
+  padding-left: 15%;
+  padding-left: 15%;
+}
+
+
 .page{
   margin-left: 10%;
   margin-right: 10%;
@@ -20,11 +50,6 @@
   width : 100%;
   margin-top: 100px;
   padding-bottom: 50px;
-}
-
-.texte-info{
-  padding-left: 15%;
-  padding-left: 15%;
 }
 
 

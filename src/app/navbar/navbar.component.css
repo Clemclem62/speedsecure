@@ -1,6 +1,6 @@
 mat-toolbar {
-  position: sticky;
-  top: 50px
+  position: fixed;
+  top: 0px;
 }
 
 a:link
@@ -20,7 +20,7 @@ a:visited {
   .ecran-grand{
     display: block;
   }
-  
+
   .ecran-petit{
     display: none;
   }
@@ -30,7 +30,7 @@ a:visited {
   .ecran-grand{
     display: none;
   }
-  
+
   .ecran-petit{
     display: block;
   }

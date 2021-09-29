@@ -23,7 +23,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FooterComponent,
     ContentComponent,
     NavbarComponent,
-    QualityComponent
+    QualityComponent,
   ],
   imports: [
     BrowserModule,

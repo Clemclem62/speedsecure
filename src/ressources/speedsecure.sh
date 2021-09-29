@@ -5,6 +5,7 @@ then
     echo "Please run as root" exit 1
 fi
 
+touch resume.txt
 
 changeRootPassword()
 {
@@ -13,33 +14,33 @@ changeRootPassword()
     apt-get install -y pwgen
     password_root=$(pwgen 13 1)
     echo "root:$password_root" | chpassw
-    echo "Votre mot de pass root est $password_root"
-    echo "Votre mot de pass root est $password_root" >> resume.txt
+    echo "Votre mot de passe root est $password_root"
+    echo "Votre mot de passe root est $password_root" >> resume.txt
 }
 
 changePortSSH()
 {
     echo "check $1"
-    if [ -z $1 ]
-    then
-        #Supprimer l'ancien port
-        sed -i '/Port /d' /etc/ssh/sshd_config
-        #Ajouter nouveau port
-        rand=$(awk -v min=10000 -v max=20000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
-        echo "Port $rand" >> /etc/ssh/sshd_config
-    fi
+    #Supprimer l'ancien port
+    sed -i '/Port /d' /etc/ssh/sshd_config
+    #Ajouter nouveau port
+    rand=$(awk -v min=10000 -v max=20000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
+    echo "Port $rand" >> /etc/ssh/sshd_config
+    echo "Port ssh : $rand" >> resume.txt
 }
 
 changePortFTP()
 {
     Port_FTP=$(awk -v min=20000 -v max=30000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
     sed -i -e "s/Port 21/Port $Port_FTP/g" /etc/proftpd/proftpd.conf
+    echo "Port ftp : $Port_FTP" >> resume.txt
 }
 
 changePortMysql()
 {
     Port_DB=$(awk -v min=30000 -v max=40000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
     sed -i -e "s/port = 3306/port = $Port_DB/g" /etc/mysql/my.cnf
+    echo "Port mysql : $Port_DB" >> resume.txt
 }
 
 
@@ -78,8 +79,12 @@ do
     echo $wantVPN
 done
 
-echo "ssh : $portSSH, ftp : $portFTP, mysql : $portMYSQL, veux VPN ? $wantVPN"
-changePortSSH "$portSSH"
+
+changeRootPassword
+changePortSSH
+changePortFTP
+changePortMysql
+configureFail2Ban
 if [ "$wantVPN" = "y" ]
 then
     configureVPN

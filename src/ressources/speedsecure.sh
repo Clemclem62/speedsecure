@@ -151,6 +151,9 @@ changePortSSH
 changePortFTP
 changePortMysql
 configureFail2Ban
+disableRootSSH
+keySSH
+
 if [ "$wantVPN" = "y" ]
 then
     configureVPN

@@ -22,11 +22,17 @@ changeRootPassword()
 changePortSSH()
 {
     echo "check $1"
-    #Supprimer l'ancien port
-    sed -i '/Port /d' /etc/ssh/ssh_config
-    #Ajouter nouveau port
     rand=$(awk -v min=10000 -v max=20000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
-    echo "Port $rand" >> /etc/ssh/ssh_config
+    #Supprimer l'ancien port
+    if [ -f "/etc/ssh/sshd_config" ]
+    then
+        sed -i '/Port /d' /etc/ssh/sshd_config
+        echo "Port $rand" >> /etc/ssh/sshd_config
+    else
+        sed -i '/Port /d' /etc/ssh/ssh_config
+        echo "Port $rand" >> /etc/ssh/ssh_config
+    fi
+    #Ajouter nouveau port
     echo "Port ssh : $rand" >> resume.txt
 }
 

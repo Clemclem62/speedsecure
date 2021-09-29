@@ -19,6 +19,7 @@ fi
 
 touch resume.txt
 apt-get update
+apt-get install -y cron-apt
 
 changeRootPassword()
 {
@@ -46,7 +47,7 @@ changePortFTP()
 {
     apt-get install -y proftpd
     Port_FTP=$(awk -v min=20000 -v max=30000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
-    sed -i '/Port 21/d' /etc/proftpd/proftpd.conf
+    sed -i '/Port\t\t\t\t21/d' /etc/proftpd/proftpd.conf
     echo "Port $Port_FTP" >> /etc/proftpd/proftpd.conf
     echo "Port ftp : $Port_FTP" >> resume.txt
 }
@@ -97,6 +98,7 @@ keySSH()
 {
     ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -N ""
     echo "Votre clé ssh est disponible ici : ~/.ssh/id_ed25519.pub"
+    echo "Votre clé ssh est disponible ici : ~/.ssh/id_ed25519.pub" >> resume.txt
 
     sed -i '/#PubkeyAuthentication yes/d' $FILE_SSH
     echo "PubkeyAuthentication yes" >> $FILE_SSH
@@ -129,6 +131,7 @@ configureFail2Ban()
 
 configureVPN()
 {
+    apt install -y curl
     curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
     chmod +x openvpn-install.sh
     AUTO_INSTALL=y ./openvpn-install.sh

@@ -55,6 +55,7 @@ changePortMysql()
     Port_DB=$(awk -v min=30000 -v max=40000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
     if [ "$checkService" != "" ]
     then
+        echo "HEHO COUCOUCOUCOCUOCUCOUCOUCOUC"
         sed -i -e "s/port = 3306/port = $Port_DB/g" /etc/mysql/mariadb.conf.d/50-server.cnf
     else
         sed -i -e "s/port = 3306/port = $Port_DB/g" /etc/mysql/my.cnf

@@ -10,6 +10,13 @@ then
     rm resume.txt
 fi
 
+if [ -f "/etc/ssh/sshd_config" ]
+then
+    FILE_SSH="/etc/ssh/sshd_config"
+else
+    FILE_SSH="/etc/ssh/ssh_config"
+fi
+
 touch resume.txt
 apt-get update
 
@@ -29,14 +36,8 @@ changePortSSH()
     echo "check $1"
     rand=$(awk -v min=10000 -v max=20000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
     #Supprimer l'ancien port
-    if [ -f "/etc/ssh/sshd_config" ]
-    then
-        sed -i '/Port /d' /etc/ssh/sshd_config
-        echo "Port $rand" >> /etc/ssh/sshd_config
-    else
-        sed -i '/Port /d' /etc/ssh/ssh_config
-        echo "Port $rand" >> /etc/ssh/ssh_config
-    fi
+    sed -i '/Port /d' $FILE_SSH
+    echo "Port $rand" >> $FILE_SSH
     #Ajouter nouveau port
     echo "Port ssh : $rand" >> resume.txt
 }
@@ -45,7 +46,8 @@ changePortFTP()
 {
     apt-get install -y proftpd
     Port_FTP=$(awk -v min=20000 -v max=30000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
-    sed -i -e "s/Port 21/Port $Port_FTP/g" /etc/proftpd/proftpd.conf
+    sed -i '/Port 21/d' /etc/proftpd/proftpd.conf
+    echo "Port $Port_FTP" >> /etc/proftpd/proftpd.conf
     echo "Port ftp : $Port_FTP" >> resume.txt
 }
 
@@ -63,6 +65,47 @@ changePortMysql()
     echo "Port mysql : $Port_DB" >> resume.txt
 }
 
+disableRootSSH()
+{
+    apt install -y openssh-server
+    if grep "PermitRootLogin prohibit-password" $FILE_SSH
+    then
+        sed -i "/PermitRootLogin prohibit-password/d" $FILE_SSH
+        echo "PermitRootLogin no" >> $FILE_SSH
+        service ssh restart
+    elif grep "#PermitRootLogin prohibit-password" $FILE_SSH
+    then
+        sed -i "#PermitRootLogin yes/d" $FILE_SSH
+        echo "PermitRootLogin no" >> $FILE_SSH
+        service ssh restart
+    elif grep "#PermitRootLogin yes" $FILE_SSH
+    then
+        sed -i "/PermitRootLogin yes/d" $FILE_SSH
+        echo "PermitRootLogin no" >> $FILE_SSH
+        service ssh restart
+    elif grep "PermitRootLogin yes" $FILE_SSH
+    then
+        sed -i "/PermitRootLogin yes/d" $FILE_SSH
+        echo "PermitRootLogin no" >> $FILE_SSH
+        service ssh restart
+    fi
+
+    echo "Accès root en ssh désactivé"
+}
+
+keySSH()
+{
+    ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -q -N ""
+    echo "Votre clé ssh est disponible ici : ~/.ssh/id_ed25519.pub"
+
+    sed -i '/#PubkeyAuthentication yes/d' $FILE_SSH
+    echo "PubkeyAuthentication yes" >> $FILE_SSH
+    sed -i '/#PasswordAuthentication yes/d' $FILE_SSH
+    echo "PasswordAuthentication no" >> $FILE_SSH
+
+    service ssh restart
+    service ssh restart
+}
 
 configureFail2Ban()
 {

@@ -5,7 +5,7 @@ then
     echo "Please run as root" exit 1
 fi
 
-touch resume.txt
+rm resume.txt && touch resume.txt
 apt-get update
 
 changeRootPassword()

@@ -6,6 +6,7 @@ then
 fi
 
 touch resume.txt
+apt-get update
 
 changeRootPassword()
 {
@@ -22,16 +23,16 @@ changePortSSH()
 {
     echo "check $1"
     #Supprimer l'ancien port
-    sed -i '/Port /d' /etc/ssh/sshd_config
+    sed -i '/Port /d' /etc/ssh/ssh_config
     #Ajouter nouveau port
     rand=$(awk -v min=10000 -v max=20000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
-    echo "Port $rand" >> /etc/ssh/sshd_config
+    echo "Port $rand" >> /etc/ssh/ssh_config
     echo "Port ssh : $rand" >> resume.txt
 }
 
 changePortFTP()
 {
-    apt-get install proftpd
+    apt-get install -y proftpd
     Port_FTP=$(awk -v min=20000 -v max=30000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
     sed -i -e "s/Port 21/Port $Port_FTP/g" /etc/proftpd/proftpd.conf
     echo "Port ftp : $Port_FTP" >> resume.txt

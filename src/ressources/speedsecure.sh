@@ -125,7 +125,7 @@ configureFail2Ban()
     # sed -i '/backend = systemd /d' /etc/fail2ban/jail.conf
     sed -i -e '/ignoreip/aignoreip = '$IP_Publique'' /etc/fail2ban/jail.conf
 
-    checkFail2ban=$('service fail2ban status | grep "fail2ban is running" | wc -l')
+    checkFail2ban=$(service fail2ban status | grep 'fail2ban is running' | wc -l)
     # Restart service
     service fail2ban restart
 

@@ -10,9 +10,18 @@ then
     rm resume.txt
 fi
 
+wantVPN="undefined"
+while [ "$wantVPN" != "y" ] && [ "$wantVPN" != "n" ]
+do
+    echo "Voulez-vous installer un serveur VPN sur votre machine ? [y/n]"
+    read wantVPN
+    echo $wantVPN
+done
+
 touch resume.txt
+add-apt-repository ppa:certbot/certbot
 apt-get update
-apt-get install -y cron-apt pwgen proftpd openssh-server fail2ban curl
+apt-get install -y cron-apt pwgen proftpd openssh-server fail2ban curl software-properties-common certbot
 
 if [ -f "/etc/ssh/sshd_config" ]
 then
@@ -143,13 +152,26 @@ configureVPN()
     AUTO_INSTALL=y ./openvpn-install.sh
 }
 
-wantVPN="undefined"
-while [ "$wantVPN" != "y" ] && [ "$wantVPN" != "n" ]
-do
-    echo "Voulez-vous installer un serveur VPN sur votre machine ? [y/n]"
-    read wantVPN
-    echo $wantVPN
-done
+configureCertBot()
+{
+    systemctl stop nginx
+    ou
+    systemctl stop apache
+    echo "Nom de votre domaine :"
+    read $Nom_Domaine
+    certbot certonly --standalone --agree-tos --no-eff-email -d $Nom_Domaine -d www.$Nom_Domaine --rsa-key-size 4096
+
+    Apache=$(dpkg -l | grep -e 'apache2 ' | wc -l)
+    Nginx=$(dpkg -l | grep -e 'nginx ' | wc -l)
+
+    if [ $Apache = "1" ]
+    then
+        service apache2 restart
+    elif [ $Nginx = "1" ]
+    then
+        service nginx restart
+    fi
+}
 
 
 changeRootPassword
@@ -159,6 +181,7 @@ changePortMysql
 configureFail2Ban
 disableRootSSH
 keySSH
+configureCertBot
 
 if [ "$wantVPN" = "y" ]
 then

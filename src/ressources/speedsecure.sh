@@ -131,7 +131,7 @@ configureFail2Ban()
 
     if [ $checkFail2ban = "0" ]
     then
-        sed -i -e "s/[sshd]/[ssh]/g" /etc/fail2ban/jail.conf
+        sed -i -e "s/[sshd]\n/[ssh]\n/" /etc/fail2ban/jail.conf
         service fail2ban restart
     fi
 }

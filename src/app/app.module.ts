@@ -14,6 +14,7 @@ import { ContentComponent } from './content/content.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { QualityComponent } from './quality/quality.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MovescrollDirective } from './movescroll.directive';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     ContentComponent,
     NavbarComponent,
     QualityComponent,
+    MovescrollDirective,
   ],
   imports: [
     BrowserModule,

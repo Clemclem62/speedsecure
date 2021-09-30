@@ -64,7 +64,7 @@ changePortMysql()
     elif [ $MariaDB = "1" ]
     then
         sed -i -e "s/#port                   = 3306/port = $Port_DB/g" /etc/mysql/mariadb.conf.d/50-server.cnf
-        service mariadb restart
+        service mysql restart
     fi
     echo "Port mysql : $Port_DB" >> resume.txt
 }

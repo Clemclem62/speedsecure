@@ -10,6 +10,11 @@ export class HeaderComponent implements OnInit {
     defaultValuePosition: number = 18;
     position1:             number = this.defaultValuePosition;
     position2:             number = this.defaultValuePosition;
+
+    defaultValueImage: number = 2;
+    image1:             number = this.defaultValueImage;
+    image2:             number = this.defaultValueImage;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -24,6 +29,27 @@ export class HeaderComponent implements OnInit {
     if(this.defaultValuePosition - label > 0) {
         this.position1 = this.defaultValuePosition - label;
         this.position2 = this.defaultValuePosition - label;
+        console.log(label);
+        if(label < 7){
+          this.image1 = 2;
+          this.image2 = 2;
+        }
+        if(label > 7){
+          this.image1 = 0.7;
+          this.image2 = 0.7;
+        }
+        if(label > 9){
+          this.image1 = 0.5;
+          this.image2 = 0.5;
+        }
+        if(label > 11){
+          this.image1 = 0.2;
+          this.image2 = 0.2;
+        }
+        if(label > 13){
+          this.image1 = 0;
+          this.image2 = 0;
+        }
     }
   }
 

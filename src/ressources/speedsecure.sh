@@ -126,12 +126,14 @@ configureFail2Ban()
     sed -i -e '/ignoreip/aignoreip = '$IP_Publique'' /etc/fail2ban/jail.conf
 
     checkFail2ban=$('service fail2ban status | grep "fail2ban is running" | wc -l')
+    # Restart service
+    service fail2ban restart
+
     if [ checkFail2ban = "1" ]
     then
         sed -i -e "s/[sshd]/[ssh]/g" /etc/fail2ban/jail.conf
+        service fail2ban restart
     fi
-    # Restart service
-    service fail2ban restart
 }
 
 configureVPN()

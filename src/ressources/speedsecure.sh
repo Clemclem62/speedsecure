@@ -163,16 +163,18 @@ configureCertBot()
     systemctl stop apache
     echo "Nom de votre domaine :"
     read $Nom_Domaine
-    certbot certonly --standalone --agree-tos --no-eff-email -d $Nom_Domaine -d www.$Nom_Domaine --rsa-key-size 4096
+    # certbot certonly --standalone --agree-tos --no-eff-email -d $Nom_Domaine -d www.$Nom_Domaine --rsa-key-size 4096
 
     Apache=$(dpkg -l | grep -e 'apache2 ' | wc -l)
     Nginx=$(dpkg -l | grep -e 'nginx ' | wc -l)
 
     if [ $Apache = "1" ]
     then
+        certbot --apache
         service apache2 restart
     elif [ $Nginx = "1" ]
     then
+        certbot --nginx
         service nginx restart
     fi
 }

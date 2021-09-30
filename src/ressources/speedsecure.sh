@@ -19,7 +19,7 @@ fi
 
 touch resume.txt
 apt-get update
-apt-get install -y cron-apt
+yes 1 | apt-get install -y cron-apt
 
 changeRootPassword()
 {

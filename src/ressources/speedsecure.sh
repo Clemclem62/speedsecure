@@ -160,7 +160,6 @@ configureVPN()
 configureCertBot()
 {
     systemctl stop nginx
-    ou
     systemctl stop apache
     echo "Nom de votre domaine :"
     read $Nom_Domaine
@@ -204,7 +203,7 @@ configureFireWall()
     nft add rule filter input ip protocol icmp accept
 
     #Accepter le ssh  depuis une IP interne
-    nft add rule filter input iifname "ens33" tcp dport $ counter accept
+    nft add rule filter input iifname "ens33" tcp dport $Port_SSH counter accept
 
     #Sortie
     nft add rule filter output oifname "lo" accept
@@ -221,7 +220,7 @@ configureFireWall()
        nft add rule filter forward ip protocol udp ip saddr $line udp dport 53 counter accept
        nft add rule filter forward ip protocol tcp ip saddr $line tcp dport { 80,443} counter accept
 
-       nft add rule nat postrout ip saddr $line snat $IP_Publiquepriority
+       nft add rule nat postrout ip saddr $line snat $IP_Publique priority
     done
 }
 

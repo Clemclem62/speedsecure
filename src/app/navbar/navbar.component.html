@@ -5,7 +5,7 @@
     <a (click)="scrollTo('root')">Mot de passe ROOT</a>
     <a (click)="scrollTo('ssh')">Port SSH</a>
     <a (click)="scrollTo('cle')">Authentification par clé publique</a>
-    <a (click)="scrollTo('mysql')">Port MySQL, MardiaDB</a>
+    <a (click)="scrollTo('mysql')">Port MySQL / MardiaDB</a>
     <a (click)="scrollTo('maj')">Maj du serveur</a>
     <a (click)="scrollTo('rkhunter')">Rkhunter</a>
     <a (click)="scrollTo('https')">HTTPS</a>
@@ -21,16 +21,14 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon mat-button [matMenuTriggerFor]="menu">menu</mat-icon>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="scrollTo('firewall')">Firewall</button>
           <button mat-menu-item (click)="scrollTo('fail2ban')">Fail2ban</button>
-          <button mat-menu-item (click)="scrollTo('cle')">Authentification par clé publique</button>
+          <button mat-menu-item (click)="scrollTo('firewall')">Firewall</button>
           <button mat-menu-item (click)="scrollTo('root')">Mot de passe ROOT</button>
           <button mat-menu-item (click)="scrollTo('ssh')">Port SSH</button>
-          <button mat-menu-item (click)="scrollTo('motd')">Traçabilité via Motd</button>
+          <button mat-menu-item (click)="scrollTo('cle')">Authentification par clé publique</button>
+          <button mat-menu-item (click)="scrollTo('mysql')">Port MySQL / MariaDB</button>
           <button mat-menu-item (click)="scrollTo('maj')">Maj du serveur</button>
-          <button mat-menu-item (click)="scrollTo('php')">Sécuriser le PHP</button>
           <button mat-menu-item (click)="scrollTo('rkhunter')">Rkhunter</button>
-          <button mat-menu-item (click)="scrollTo('ip')">Restriction par IP</button>
           <button mat-menu-item (click)="scrollTo('https')">HTTPS</button>
           <button mat-menu-item (click)="scrollTo('vpn')">VPN</button>
           <button mat-menu-item (click)="scrollTo('mfa')">MFA</button>

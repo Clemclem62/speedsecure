@@ -182,45 +182,45 @@ configureFireWall()
 {
     ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' >> resultIps.txt
 
-    flush ruleset
-    add table filter
-    add table nat
+    nft flush ruleset
+    nft add table filter
+    nft add table nat
 
     # Par défaut on bloque tout
-    add chain filter input { type filter hook input priority 0; policy drop ;}
-    add chain filter output { type filter hook output priority 0; policy drop ;}
-    add chain filter forward { type filter hook forward priority 0; policy drop ;}
-    add chain nat prerout { type nat hook prerouting priority 0; }
-    add chain nat postrout { type nat hook postrouting priority 0; }
+    nft add chain filter input { type filter hook input priority 0; policy drop ;}
+    nft add chain filter output { type filter hook output priority 0; policy drop ;}
+    nft add chain filter forward { type filter hook forward priority 0; policy drop ;}
+    nft add chain nat prerout { type nat hook prerouting priority 0; }
+    nft add chain nat postrout { type nat hook postrouting priority 0; }
 
     #Autorisation des retours
-    add rule filter input ct state established accept
-    add rule filter output ct state established accept
-    add rule filter forward ct state established accept
+    nft add rule filter input ct state established accept
+    nft add rule filter output ct state established accept
+    nft add rule filter forward ct state established accept
 
     #Entrée
-    add rule filter input iifname "lo" accept
-    add rule filter input ip protocol icmp accept
+    nft add rule filter input iifname "lo" accept
+    nft add rule filter input ip protocol icmp accept
 
     #Accepter le ssh  depuis une IP interne
-    add rule filter input iifname "ens33" tcp dport $ counter accept
+    nft add rule filter input iifname "ens33" tcp dport $ counter accept
 
     #Sortie
-    add rule filter output oifname "lo" accept
-    add rule filter output ip protocol icmp accept
-    add rule filter output ip protocol tcp tcp dport { 80,443} accept
-    add rule filter output ip protocol udp udp dport 53 accept
+    nft add rule filter output oifname "lo" accept
+    nft add rule filter output ip protocol icmp accept
+    nft add rule filter output ip protocol tcp tcp dport { 80,443} accept
+    nft add rule filter output ip protocol udp udp dport 53 accept
 
     #dnat
     cat resultIps.txt | while read line
     do
-       add rule filter forward ip protocol tcp ip daddr $line tcp dport { 80,443} accept
+       nft add rule filter forward ip protocol tcp ip daddr $line tcp dport { 80,443} accept
 
        #snat
-       add rule filter forward ip protocol udp ip saddr $line udp dport 53 counter accept
-       add rule filter forward ip protocol tcp ip saddr $line tcp dport { 80,443} counter accept
+       nft add rule filter forward ip protocol udp ip saddr $line udp dport 53 counter accept
+       nft add rule filter forward ip protocol tcp ip saddr $line tcp dport { 80,443} counter accept
 
-       add rule nat postrout ip saddr $line snat $IP_Publique
+       nft add rule nat postrout ip saddr $line snat $IP_Publique
     done
 }
 

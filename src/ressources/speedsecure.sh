@@ -19,9 +19,11 @@ do
 done
 
 touch resume.txt
+apt-get update
+apt-get install -y software-properties-common cron-apt pwgen proftpd openssh-server fail2ban curl software-properties-common
 add-apt-repository ppa:certbot/certbot
 apt-get update
-apt-get install -y cron-apt pwgen proftpd openssh-server fail2ban curl software-properties-common certbot
+apt-get install -y certbot
 
 if [ -f "/etc/ssh/sshd_config" ]
 then

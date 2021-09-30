@@ -9,12 +9,13 @@ a
   font-size: 14px;
   margin: auto;
   text-decoration:none;
+
 }
 
-a:visited {
-  color: black
+a:hover{
+  cursor: pointer;
+  color: #ACACAC;
 }
-
 
 @media (min-width: 1200px) {
   .ecran-grand{

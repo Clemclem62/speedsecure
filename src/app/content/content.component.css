@@ -9,7 +9,7 @@
   margin-left: 15%;
   margin-top: 100px;
   margin-bottom: 150px;
-  color: #be4a64;
+  color: #005c86;
 }
 
 .titre-de-fonction{
@@ -24,17 +24,17 @@
   font-family: 'Comfortaa', sans-serif;
   font-size: 20px !important;
   padding-left: 15%;
-}
+text-align: justify}
 
 
 .page{
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 12%;
+  margin-right: 12%;
 }
 
 .ajustement-image{
   float: left;
-  padding: 0 100px 100px 0;
+
   width: 150px;
 }
 
@@ -64,6 +64,7 @@ h2{
   margin-left: 20%;
   margin-top: 2%;
   margin-bottom: 2%;
+  text-justify: auto;
 }
 
 
@@ -80,3 +81,4 @@ h2{
 .grey{
   background-color: grey;
 }
+

@@ -10,6 +10,10 @@ then
     rm resume.txt
 fi
 
+touch resume.txt
+apt-get update
+apt-get install -y cron-apt pwgen proftpd openssh-server fail2ban curl
+
 if [ -f "/etc/ssh/sshd_config" ]
 then
     FILE_SSH="/etc/ssh/sshd_config"
@@ -17,15 +21,11 @@ else
     FILE_SSH="/etc/ssh/ssh_config"
 fi
 
-touch resume.txt
-apt-get update
-apt-get install -y cron-apt
 
 changeRootPassword()
 {
     echo "je change le mdp"
     # Installation pwgen
-    apt-get install -y pwgen
     password_root=$(pwgen 13 1)
     echo "root:$password_root" | chpassw
     echo "Votre mot de passe root est $password_root"
@@ -45,7 +45,6 @@ changePortSSH()
 
 changePortFTP()
 {
-    apt-get install -y proftpd
     Port_FTP=$(awk -v min=20000 -v max=30000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
     sed -i '/Port\t\t\t\t21/d' /etc/proftpd/proftpd.conf
     echo "Port $Port_FTP" >> /etc/proftpd/proftpd.conf
@@ -72,7 +71,6 @@ changePortMysql()
 
 disableRootSSH()
 {
-    apt install -y openssh-server
     if grep "PermitRootLogin prohibit-password" $FILE_SSH
     then
         sed -i "/PermitRootLogin prohibit-password/d" $FILE_SSH
@@ -115,9 +113,6 @@ keySSH()
 
 configureFail2Ban()
 {
-    # Installation
-    apt-get install -y fail2ban
-
     # Bantime => 1H
     sed -i -e "s/bantime = 10m/bantime = 3600/g" /etc/fail2ban/jail.conf
 
@@ -137,7 +132,6 @@ configureFail2Ban()
 
 configureVPN()
 {
-    apt install -y curl
     curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
     chmod +x openvpn-install.sh
     AUTO_INSTALL=y ./openvpn-install.sh

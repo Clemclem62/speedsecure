@@ -24,7 +24,7 @@ Port_SSH=$(awk -v min=10000 -v max=20000 'BEGIN{srand(); print int(min+rand()*(m
 
 touch resume.txt
 apt-get update
-apt-get install -y software-properties-common cron-apt pwgen proftpd openssh-server fail2ban curl software-properties-common nftables
+apt-get install -y software-properties-common net-tools cron-apt pwgen proftpd openssh-server fail2ban curl software-properties-common nftables
 add-apt-repository ppa:certbot/certbot
 apt-get update
 apt-get install -y certbot
@@ -180,6 +180,8 @@ configureCertBot()
 
 configureFireWall()
 {
+    ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' >> resultIps.txt
+
     flush ruleset
     add table filter
     add table nat
@@ -210,14 +212,16 @@ configureFireWall()
     add rule filter output ip protocol udp udp dport 53 accept
 
     #dnat
+    cat resultIps.txt | while read line
+    do
+       add rule filter forward ip protocol tcp ip daddr $line tcp dport { 80,443} accept
 
-    add rule filter forward ip protocol tcp ip daddr 192.168.226.144 tcp dport { 80,443} accept
+       #snat
+       add rule filter forward ip protocol udp ip saddr $line udp dport 53 counter accept
+       add rule filter forward ip protocol tcp ip saddr $line tcp dport { 80,443} counter accept
 
-    #snat
-    add rule filter forward ip protocol udp ip saddr 192.168.226.144 udp dport 53 counter accept
-    add rule filter forward ip protocol tcp ip saddr 192.168.226.144 tcp dport { 80,443} counter accept
-
-    add rule nat postrout ip saddr 192.168.226.144 snat $IP_Publique
+       add rule nat postrout ip saddr $line snat $IP_Publique
+    done
 }
 
 changeRootPassword
@@ -228,6 +232,7 @@ configureFail2Ban
 disableRootSSH
 keySSH
 configureCertBot
+configureFireWall
 
 if [ "$wantVPN" = "y" ]
 then

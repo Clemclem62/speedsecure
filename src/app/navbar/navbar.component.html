@@ -20,19 +20,19 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon mat-button [matMenuTriggerFor]="menu">menu</mat-icon>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item><a href="#firewall">Firewall</a></button>
-          <button mat-menu-item><a href="#fail2ban">Fail2ban</a></button>
-          <button mat-menu-item><a href="#cle">Authentification par clé publique</a></button>
-          <button mat-menu-item><a href="#root">Mot de passe ROOT</a></button>
-          <button mat-menu-item><a href="#ssh">Port SSH</a></button>
-          <button mat-menu-item><a href="#motd">Traçabilité via Motd</a></button>
-          <button mat-menu-item><a href="#maj">Maj du serveur</a></button>
-          <button mat-menu-item><a href="#php">Sécuriser le PHP</a></button>
-          <button mat-menu-item><a href="#rkhunter">Rkhunter</a></button>
-          <button mat-menu-item><a href="#ip">Restriction par IP</a></button>
-          <button mat-menu-item><a href="#https">HTTPS</a></button>
-          <button mat-menu-item><a href="#vpn">VPN</a></button>
-          <button mat-menu-item><a href="#mfa">MFA</a></button>
+          <button mat-menu-item (click)="scrollTo('firewall')">Firewall</button>
+          <button mat-menu-item (click)="scrollTo('fail2ban')">Fail2ban</button>
+          <button mat-menu-item (click)="scrollTo('cle')">Authentification par clé publique</button>
+          <button mat-menu-item (click)="scrollTo('root')">Mot de passe ROOT</button>
+          <button mat-menu-item (click)="scrollTo('ssh')">Port SSH</button>
+          <button mat-menu-item (click)="scrollTo('motd')">Traçabilité via Motd</button>
+          <button mat-menu-item (click)="scrollTo('maj')">Maj du serveur</button>
+          <button mat-menu-item (click)="scrollTo('php')">Sécuriser le PHP</button>
+          <button mat-menu-item (click)="scrollTo('rkhunter')">Rkhunter</button>
+          <button mat-menu-item (click)="scrollTo('ip')">Restriction par IP</button>
+          <button mat-menu-item (click)="scrollTo('https')">HTTPS</button>
+          <button mat-menu-item (click)="scrollTo('vpn')">VPN</button>
+          <button mat-menu-item (click)="scrollTo('mfa')">MFA</button>
         </mat-menu>
     </button>
   </mat-toolbar-row>

@@ -123,9 +123,13 @@ configureFail2Ban()
     IP_Publique=$(wget -qO- icanhazip.com)
     sed -i '/#ignoreip /d' /etc/fail2ban/jail.conf
     # sed -i '/backend = systemd /d' /etc/fail2ban/jail.conf
-    echo "backend = systemd" >> /etc/fail2ban/jail.conf
     sed -i -e '/ignoreip/aignoreip = '$IP_Publique'' /etc/fail2ban/jail.conf
 
+    checkFail2ban=$('service fail2ban status | grep "fail2ban is running" | wc -l')
+    if [ checkFail2ban = "1" ]
+    then
+        sed -i -e "s/[sshd]/[ssh]/g" /etc/fail2ban/jail.conf
+    fi
     # Restart service
     service fail2ban restart
 }

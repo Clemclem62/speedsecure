@@ -187,11 +187,11 @@ configureFireWall()
     nft add table nat
 
     # Par défaut on bloque tout
-    nft add chain filter input { type filter hook input priority 0; policy drop ;}
-    nft add chain filter output { type filter hook output priority 0; policy drop ;}
-    nft add chain filter forward { type filter hook forward priority 0; policy drop ;}
-    nft add chain nat prerout { type nat hook prerouting priority 0; }
-    nft add chain nat postrout { type nat hook postrouting priority 0; }
+    nft add chain filter input { type filter hook input priority 0\; policy drop \;}
+    nft add chain filter output { type filter hook output priority 0\; policy drop \;}
+    nft add chain filter forward { type filter hook forward priority 0\; policy drop \;}
+    nft add chain nat prerout { type nat hook prerouting priority 0\; }
+    nft add chain nat postrout { type nat hook postrouting priority 0\; }
 
     #Autorisation des retours
     nft add rule filter input ct state established accept

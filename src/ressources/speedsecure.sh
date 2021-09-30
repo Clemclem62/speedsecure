@@ -60,11 +60,11 @@ changePortMysql()
 
     if [ $MySQL = "1" ]
     then
-        sed -i -e "s/port = 3306/port = $Port_DB/g" /etc/mysql/my.cnf
+        sed -i -e "s/port                   = 3306/port = $Port_DB/g" /etc/mysql/my.cnf
         service mysql restart
     elif [ $MariaDB = "1" ]
     then
-        sed -i -e "s/port = 3306/port = $Port_DB/g" /etc/mysql/mariadb.conf.d/50-server.cnf
+        sed -i -e "s/#port                   = 3306/port = $Port_DB/g" /etc/mysql/mariadb.conf.d/50-server.cnf
         service mariadb restart
     fi
     echo "Port mysql : $Port_DB" >> resume.txt
@@ -127,6 +127,7 @@ configureFail2Ban()
     # IgnoreIP
     IP_Publique=$(wget -qO- icanhazip.com)
     sed -i '/#ignoreip /d' /etc/fail2ban/jail.conf
+    sed -i '/backend = systemd /d' /etc/fail2ban/jail.conf
     sed -i -e '/ignoreip/aignoreip = '$IP_Publique'' /etc/fail2ban/jail.conf
 
     # Restart service

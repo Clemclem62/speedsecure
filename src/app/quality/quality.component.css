@@ -24,3 +24,35 @@
 h3{
   margin-bottom: 1rem;
 }
+
+
+@media (max-width: 800px) {
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .quality{
+    column-count: 4;
+    background-color: #F7F8F9;
+    padding-bottom: 2rem;
+  }
+
+  .imgContent {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+  }
+
+  .textContent{
+    text-align: center;
+    font-size: 10px;
+  }
+
+  h3{
+    margin-bottom: 1rem;
+  }
+
+}

@@ -1,17 +1,40 @@
-.sticky{
-  position: sticky;
-  width: 100%;
-  top: 0;
+mat-toolbar {
+  position: fixed;
+  top: 0px;
 }
 
-a:link
+a
 {
   color: black;
   font-size: 14px;
   margin: auto;
   text-decoration:none;
+
 }
 
-a:visited {
-  color: black
+a:hover{
+  cursor: pointer;
+  color: #ACACAC;
 }
+
+@media (min-width: 1200px) {
+  .ecran-grand{
+    display: block;
+  }
+
+  .ecran-petit{
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ecran-grand{
+    display: none;
+  }
+
+  .ecran-petit{
+    display: block;
+  }
+}
+
+

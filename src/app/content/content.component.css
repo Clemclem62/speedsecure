@@ -1,18 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+
+
+.content-explication p{
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 25px !important;
+  margin-right: 15%;
+  margin-left: 15%;
+  margin-top: 100px;
+  margin-bottom: 150px;
+  color: #005c86;
+}
+
+.titre-de-fonction{
+  font-family: 'Audiowide', sans-serif;
+  font-size: 25px !important;
+  text-align: right;
+  text-decoration: none;
+  color: #242a4e;
+}
+
+.texte-info{
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 20px !important;
+  padding-left: 15%;
+text-align: justify}
+
+
 .page{
+  margin-left: 12%;
+  margin-right: 12%;
+}
+
+.ajustement-image{
+  float: left;
+
+  width: 150px;
+}
+
+.trait_dessus{
+  border-top: 1px solid #000;
+  width : 100%;
+  margin-top: 100px;
+  padding-bottom: 50px;
+}
+
+.trait_dessus_fin{
+  width : 100%;
+  margin-top: 100px;
+  padding-bottom: 50px;
+}
+
+
+h2{
+  margin-top: 1.6em;
+  text-decoration: underline;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.content{
   margin-right: 20%;
   margin-left: 20%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-justify: auto;
 }
 
-.imgContent{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 150px
+
+.image {
+  float: left;
+  margin: 0 10px 10px 0;
+  }
+
+.target-navbar{
+  padding-top: 40px;
+  margin-top: -40px;
 }
 
-div:target{
-  padding-top: 7em;
-  margin-top: -7em;
+.grey{
+  background-color: grey;
 }
 
 

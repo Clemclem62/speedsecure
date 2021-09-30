@@ -12,7 +12,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { QualityComponent } from './quality/quality.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { MovescrollDirective } from './movescroll.directive';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     HeaderComponent,
     FooterComponent,
     ContentComponent,
-    NavbarComponent
+    NavbarComponent,
+    QualityComponent,
+    MovescrollDirective,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

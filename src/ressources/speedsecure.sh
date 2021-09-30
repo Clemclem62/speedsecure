@@ -2,7 +2,8 @@
 
 if [[ $(id -u) -ne 0 ]]
 then
-    echo "Please run as root" exit 1
+    echo "Please run as root"
+    exit
 fi
 
 if [ -f "resume.txt" ]
@@ -220,7 +221,7 @@ configureFireWall()
        nft add rule filter forward ip protocol udp ip saddr $line udp dport 53 counter accept
        nft add rule filter forward ip protocol tcp ip saddr $line tcp dport { 80,443} counter accept
 
-       nft add rule nat postrout ip saddr $line snat $IP_Publique
+       nft add rule nat postrout ip saddr $line snat $IP_Publiquepriority
     done
 }
 

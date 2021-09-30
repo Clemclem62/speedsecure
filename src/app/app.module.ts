@@ -14,7 +14,12 @@ import { ContentComponent } from './content/content.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { QualityComponent } from './quality/quality.component';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { MovescrollDirective } from './movescroll.directive';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatInputModule} from '@angular/material/input';
+import { GetStartedComponent } from './get-started/get-started.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -25,7 +30,8 @@ import { MovescrollDirective } from './movescroll.directive';
     ContentComponent,
     NavbarComponent,
     QualityComponent,
-    MovescrollDirective,
+    GetStartedComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +42,10 @@ import { MovescrollDirective } from './movescroll.directive';
     MatIconModule,
     MatMenuModule,
     MatGridListModule,
+    ClipboardModule,
+    MatSnackBarModule,
+    MatInputModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

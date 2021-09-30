@@ -18,9 +18,13 @@ do
     echo $wantVPN
 done
 
+IP_Publique=$(wget -qO- icanhazip.com)
+Port_SSH=$(awk -v min=10000 -v max=20000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
+
+
 touch resume.txt
 apt-get update
-apt-get install -y software-properties-common cron-apt pwgen proftpd openssh-server fail2ban curl software-properties-common
+apt-get install -y software-properties-common cron-apt pwgen proftpd openssh-server fail2ban curl software-properties-common nftables
 add-apt-repository ppa:certbot/certbot
 apt-get update
 apt-get install -y certbot
@@ -46,12 +50,11 @@ changeRootPassword()
 changePortSSH()
 {
     echo "check $1"
-    rand=$(awk -v min=10000 -v max=20000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
     #Supprimer l'ancien port
     sed -i '/Port /d' $FILE_SSH
-    echo "Port $rand" >> $FILE_SSH
+    echo "Port $Port_SSH" >> $FILE_SSH
     #Ajouter nouveau port
-    echo "Port ssh : $rand" >> resume.txt
+    echo "Port ssh : $Port_SSH" >> resume.txt
 }
 
 changePortFTP()
@@ -131,7 +134,6 @@ configureFail2Ban()
     sed -i -e "s/maxretry = 3/maxretry = 3/g" /etc/fail2ban/jail.conf
 
     # IgnoreIP
-    IP_Publique=$(wget -qO- icanhazip.com)
     sed -i '/#ignoreip /d' /etc/fail2ban/jail.conf
     # sed -i '/backend = systemd /d' /etc/fail2ban/jail.conf
     sed -i -e '/ignoreip/aignoreip = '$IP_Publique'' /etc/fail2ban/jail.conf
@@ -175,6 +177,48 @@ configureCertBot()
     fi
 }
 
+
+configureFireWall()
+{
+    flush ruleset
+    add table filter
+    add table nat
+
+    # Par défaut on bloque tout
+    add chain filter input { type filter hook input priority 0; policy drop ;}
+    add chain filter output { type filter hook output priority 0; policy drop ;}
+    add chain filter forward { type filter hook forward priority 0; policy drop ;}
+    add chain nat prerout { type nat hook prerouting priority 0; }
+    add chain nat postrout { type nat hook postrouting priority 0; }
+
+    #Autorisation des retours
+    add rule filter input ct state established accept
+    add rule filter output ct state established accept
+    add rule filter forward ct state established accept
+
+    #Entrée
+    add rule filter input iifname "lo" accept
+    add rule filter input ip protocol icmp accept
+
+    #Accepter le ssh  depuis une IP interne
+    add rule filter input iifname "ens33" tcp dport $ counter accept
+
+    #Sortie
+    add rule filter output oifname "lo" accept
+    add rule filter output ip protocol icmp accept
+    add rule filter output ip protocol tcp tcp dport { 80,443} accept
+    add rule filter output ip protocol udp udp dport 53 accept
+
+    #dnat
+
+    add rule filter forward ip protocol tcp ip daddr 192.168.226.144 tcp dport { 80,443} accept
+
+    #snat
+    add rule filter forward ip protocol udp ip saddr 192.168.226.144 udp dport 53 counter accept
+    add rule filter forward ip protocol tcp ip saddr 192.168.226.144 tcp dport { 80,443} counter accept
+
+    add rule nat postrout ip saddr 192.168.226.144 snat $IP_Publique
+}
 
 changeRootPassword
 changePortSSH

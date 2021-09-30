@@ -19,7 +19,7 @@ fi
 
 touch resume.txt
 apt-get update
-echo 1 | apt-get install -y cron-apt
+apt-get install -y cron-apt
 
 changeRootPassword()
 {
@@ -54,14 +54,18 @@ changePortFTP()
 
 changePortMysql()
 {
-    checkService=$(service mysql status | grep "MariaDB")
     Port_DB=$(awk -v min=30000 -v max=40000 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
-    if [ "$checkService" != "" ]
+    MySQL=$(dpkg -l | grep -e 'mysql-server ' | wc -l)
+    MariaDB=$(dpkg -l | grep -e 'mariadb-server ' | wc -l)
+
+    if [ $MySQL = "1" ]
     then
-        echo "HEHO COUCOUCOUCOCUOCUCOUCOUCOUC"
-        sed -i -e "s/port = 3306/port = $Port_DB/g" /etc/mysql/mariadb.conf.d/50-server.cnf
-    else
         sed -i -e "s/port = 3306/port = $Port_DB/g" /etc/mysql/my.cnf
+        service mysql restart
+    elif [ $MariaDB = "1" ]
+    then
+        sed -i -e "s/port = 3306/port = $Port_DB/g" /etc/mysql/mariadb.conf.d/50-server.cnf
+        service mariadb restart
     fi
     echo "Port mysql : $Port_DB" >> resume.txt
 }

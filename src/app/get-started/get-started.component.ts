@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-get-started',
@@ -8,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class GetStartedComponent implements OnInit {
 
-    constructor(private _snackBar: MatSnackBar, private clipboard: Clipboard) { }
+    constructor(private _snackBar: MatSnackBar) { }
 
     ngOnInit(): void {
     }

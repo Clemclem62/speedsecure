@@ -90,22 +90,18 @@ disableRootSSH()
     then
         sed -i "/PermitRootLogin prohibit-password/d" $FILE_SSH
         echo "PermitRootLogin no" >> $FILE_SSH
-        service ssh restart
     elif grep "#PermitRootLogin prohibit-password" $FILE_SSH
     then
         sed -i "#PermitRootLogin yes/d" $FILE_SSH
         echo "PermitRootLogin no" >> $FILE_SSH
-        service ssh restart
     elif grep "#PermitRootLogin yes" $FILE_SSH
     then
         sed -i "/PermitRootLogin yes/d" $FILE_SSH
         echo "PermitRootLogin no" >> $FILE_SSH
-        service ssh restart
     elif grep "PermitRootLogin yes" $FILE_SSH
     then
         sed -i "/PermitRootLogin yes/d" $FILE_SSH
         echo "PermitRootLogin no" >> $FILE_SSH
-        service ssh restart
     fi
 
     echo "Accès root en ssh désactivé"

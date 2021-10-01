@@ -1,11 +1,77 @@
 <div style="text-align: center;">
     <mat-form-field class="example-full-width" appearance="fill" [style.width.px]=500>
-        <input matInput disabled value="curl https://speedsecure.nastream.fr/download | bash">
+        <input matInput disabled value="https://speedsecure.nastream.fr/download">
     </mat-form-field><br />
 
     <button mat-flat-button color="primary" (click)="openSnackBar()" class="example-action-button">
-        Copier la commande !
+        Copier le lien !
     </button>
 
-    
+    <p>
+        En executant (avec les droit root) le fichier speedsecure.sh via le lien ci-dessus,
+        vous commencerez automatiquement la procédure d'installation, voici les informations a savoir :
+    </p>
+    <p>
+        Exécuté le script en tant que root
+    </p>
+    <p>
+        Voulez-vous installer un serveur VPN sur votre machine ?
+    </p>
+    <p>
+        Changement du Passeword root
+        Installation de pwgen (Générateur de password aléatoire)
+        Modification du passeword avec chpasswd
+    </p>
+    <p>
+        Changement du port SSH par défaut
+        Génération d'un chiffre aléatoire dans une plage entre 10000 et 20000
+        Changement du port dans le fichier de configuration
+    </p>
+    <p>
+        Changement du port FTP par défaut
+        Génération d'un chiffre aléatoire dans une plage entre 20000 et 30000
+        Changement du port dans le fichier de configuration
+    </p>
+    <p>
+        Changement du port DB par défaut (Prise en compte de différents types de DB (MariaDB / MySQL) )
+        Test si mysql ou mariadb
+        Génération d'un chiffre aléatoire dans une plage entre 30000 et 40000
+        Changement du port dans le fichier de configuration
+    </p>
+    <p>
+        Désactivation de l'accès ssh pour l'utilisateur root
+        Modification du fichier de configuration => PermitRootLogin no
+    </p>
+    <p>
+        Mise en place de l'accès SSH par clé
+        Génération d'une paire de clé au format ed25519
+        Modification du fichier de configuration pour n'autoriser que les accès via clé
+    </p>
+    <p>
+        Configuration Fail2ban
+        Récupération de l'ip publique
+        Bantime => 1H
+        MaxRetry => 3
+        IgnoreIP => IpPublique
+        Vérification du status du service
+    </p>
+    <p>
+        Mise en place accès VPN
+        Installation d'OpenVPN
+        Création d'un accès avec l'utilisateur client
+        Génération du certificat
+    </p>
+    <p>
+        Configuration du HTTPS sur le domaine (Prise en compte de différents types de serveur web (Apache / Nginx))
+        Récupération du nom de domaine
+        Test si Apache ou MySQL
+        Execution de CertBot avec le domaine en paramètre
+    </p>
+    <p>
+        Configuration du firewall grâce à nftables.
+        Filtration des flux entrants et sortants
+        Rendre accessible depuis l'exterieur aux services web HTTP/HTTPS, SSH, FTP et la base de données
+        Nom du logiciel : NFTable
+    </p>
+
 </div>

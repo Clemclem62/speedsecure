@@ -20,6 +20,7 @@ import {MatInputModule} from '@angular/material/input';
 import { GetStartedComponent } from './get-started/get-started.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { DownloadComponent } from './download/download.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { HomeComponent } from './home/home.component';
     QualityComponent,
     GetStartedComponent,
     HomeComponent,
+    DownloadComponent,
   ],
   imports: [
     BrowserModule,
